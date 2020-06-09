@@ -14,16 +14,35 @@
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
     "react-app-rewired": "^2.1.6",
+    "tslint": "^6.1.2",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-react": "^5.0.0",
     "typescript": "^3.9.5"
   },
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
+    "lint": "tslint --fix -c tslint.json './src/**/*.{ts,tsx}'",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "linters": {
+      "src/**/*.{js,jsx,ts,tsx,json}": [
+        "yarn lint",
+        "prettier --write",
+        "git add"
+      ]
+    }
   },
   "browserslist": {
     "production": [
