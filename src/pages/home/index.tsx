@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import Api from '../../lib/api';
 import logo from '../../logo.svg';
 import styles from './index.module.css';
 
@@ -10,6 +11,28 @@ const Home = () => {
   useEffect(() => {
     setLinkTitle('进入内页');
   }, []);
+
+  // useEffect(() => {
+  //   Api.get('/api/test')
+  //     .then((res) => {
+  //       //save data
+  //     })
+  //     .catch((error) => {
+  //       // show error message
+  //     });
+  // }, []);
+
+  // useEffect(() => {
+  //   Api.post('/api/test', {
+  //     params: { id: '122334' },
+  //   })
+  //     .then((res) => {
+  //       //save data
+  //     })
+  //     .catch((error) => {
+  //       // show error message
+  //     });
+  // }, []);
 
   const goToTestPage = () => {
     history.push({ pathname: 'test', state: { id: '13' } });
